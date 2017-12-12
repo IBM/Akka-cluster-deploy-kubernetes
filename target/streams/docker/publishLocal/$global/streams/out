@@ -1,0 +1,34 @@
+[0m[[0m[0mdebug[0m] [0m[0mExecuting Native docker build --force-rm -t szihai/myapp:0.1-SNAPSHOT -t szihai/myapp:latest .[0m
+[0m[[0m[0mdebug[0m] [0m[0mWorking directory /Users/andyshi/Downloads/akka-cluster-example/target/docker/stage[0m
+[0m[[0m[0minfo[0m] [0m[0mSending build context to Docker daemon  32.02MB[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 1/8 : FROM local/openjdk-jre-8-bash[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 342ee769e5ac[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 2/8 : MAINTAINER andy.shi@ibm.com[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in df1a5de3b367[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 617e6d40ac87[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container df1a5de3b367[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 3/8 : WORKDIR /opt/docker[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> dfe7912661c8[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 1a51582feb0d[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 4/8 : ADD opt /opt[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> e7a8e4d593b1[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 5/8 : RUN chown -R daemon:daemon .[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 10d490cd7b9c[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 4330bf170b33[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 10d490cd7b9c[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 6/8 : USER daemon[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in b86dac4a9f34[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 114d7f8cd791[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container b86dac4a9f34[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 7/8 : ENTRYPOINT bin/myapp -DakkaActorSystemName="$AKKA_ACTOR_SYSTEM_NAME" -Dakka.remote.netty.tcp.hostname="$(eval "echo $AKKA_REMOTING_BIND_HOST")" -Dakka.remote.netty.tcp.port="$AKKA_REMOTING_BIND_PORT" $(IFS=','; I=0; for NODE in $AKKA_SEED_NODES; do echo "-Dakka.cluster.seed-nodes.$I=akka.tcp://$AKKA_ACTOR_SYSTEM_NAME@$NODE"; I=$(expr $I + 1); done) -Dakka.io.dns.resolver=async-dns -Dakka.io.dns.async-dns.resolve-srv=true -Dakka.io.dns.async-dns.resolv-conf=on -DhttpHost="$HTTP_HOST" -DhttpPort="$HTTP_PORT" -DclusterMembershipAskTimeout="$CLUSTER_MEMBERSHIP_ASK_TIMEOUT"[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 194954b1c179[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> debe5886bce5[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 194954b1c179[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 8/8 : CMD[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in bf7a5c97f9b8[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 1a3772169a1f[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container bf7a5c97f9b8[0m
+[0m[[0m[0minfo[0m] [0m[0mSuccessfully built 1a3772169a1f[0m
+[0m[[0m[0minfo[0m] [0m[0mSuccessfully tagged szihai/myapp:0.1-SNAPSHOT[0m
+[0m[[0m[0minfo[0m] [0m[0mSuccessfully tagged szihai/myapp:latest[0m
+[0m[[0m[0minfo[0m] [0m[0mBuilt image szihai/myapp:0.1-SNAPSHOT[0m

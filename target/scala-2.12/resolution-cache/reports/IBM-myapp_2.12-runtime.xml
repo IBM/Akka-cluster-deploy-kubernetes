@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="IBM"
+		module="myapp_2.12"
+		revision="0.1-SNAPSHOT"
+		conf="runtime"
+		confs="compile, runtime, test, provided, optional, universal, universal-docs, universal-src, windows, docker, linux, rpm, debian, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
+		date="20171211151843"/>
+	<dependencies>
+		<module organisation="org.scala-lang" name="scala-reflect">
+			<revision name="2.12.3" status="release" pubdate="20170725034444" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.12.3/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="21">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="no" details="" size="2637" time="0" location="/Users/andyshi/.ivy2/cache/org.scala-lang/scala-reflect/ivy-2.12.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.3/scala-reflect-2.12.3.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="2.6.5"/>
+				<artifacts>
+					<artifact name="scala-reflect" type="jar" ext="jar" status="no" details="" size="3567871" time="0" location="/Users/andyshi/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.12.3.jar">
+						<origin-location is-local="false" location="UNKNOWN"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.play" name="play-json_2.12">
+			<revision name="2.6.5" status="release" pubdate="20170914130132" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-json" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master, runtime(*), master(compile), compile(*)" position="19">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
+				<metadata-artifact status="successful" details="" size="4475" time="260" location="/Users/andyshi/.ivy2/cache/com.typesafe.play/play-json_2.12/ivy-2.6.5.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.typesafe.play/play-json_2.12/ivy-2.6.5.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-json_2.12/2.6.5/play-json_2.12-2.6.5.pom"/>
+				<caller organisation="IBM" name="myapp_2.12" conf="compile, runtime" rev="2.6.5" rev-constraint-default="2.6.5" rev-constraint-dynamic="2.6.5" callerrev="0.1-SNAPSHOT"/>
+				<caller organisation="de.heikoseeberger" name="akka-http-play-json_2.12" conf="default, compile, runtime, master" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="1.19.0-M2"/>
+				<artifacts>
+					<artifact name="play-json_2.12" type="jar" ext="jar" status="successful" details="" size="631663" time="1776" location="/Users/andyshi/.ivy2/cache/com.typesafe.play/play-json_2.12/jars/play-json_2.12-2.6.5.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-json_2.12/2.6.5/play-json_2.12-2.6.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.6.3" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master, default(compile)" position="-1">
+				<evicted-by rev="2.6.5"/>
+				<caller organisation="de.heikoseeberger" name="akka-http-play-json_2.12" conf="default, compile, runtime, master" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="1.19.0-M2"/>
+				<caller organisation="IBM" name="myapp_2.12" conf="compile, runtime" rev="2.6.5" rev-constraint-default="2.6.5" rev-constraint-dynamic="2.6.5" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310">
+			<revision name="2.8.9" status="release" pubdate="20170611220823" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="28">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="4533" time="225" location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/ivy-2.8.9.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/ivy-2.8.9.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.8.9/jackson-datatype-jsr310-2.8.9.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.8.9" rev-constraint-default="2.8.9" rev-constraint-dynamic="2.8.9" callerrev="2.6.5"/>
+				<artifacts>
+					<artifact name="jackson-datatype-jsr310" type="bundle" ext="jar" status="successful" details="" size="90059" time="254" location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/bundles/jackson-datatype-jsr310-2.8.9.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.8.9/jackson-datatype-jsr310-2.8.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8">
+			<revision name="2.8.9" status="release" pubdate="20170611220811" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="27">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2251" time="226" location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/ivy-2.8.9.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/ivy-2.8.9.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.8.9/jackson-datatype-jdk8-2.8.9.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.8.9" rev-constraint-default="2.8.9" rev-constraint-dynamic="2.8.9" callerrev="2.6.5"/>
+				<artifacts>
+					<artifact name="jackson-datatype-jdk8" type="bundle" ext="jar" status="successful" details="" size="33877" time="229" location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/bundles/jackson-datatype-jdk8-2.8.9.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.8.9/jackson-datatype-jdk8-2.8.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-databind">
+			<revision name="2.8.9" status="release" pubdate="20170611175351" resolver="public" artresolver="public" homepage="http://github.com/FasterXML/jackson" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="26">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="5426" time="225" location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.8.9.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.8.9.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.8.9/jackson-databind-2.8.9.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.8.9" rev-constraint-default="2.8.9" rev-constraint-dynamic="2.8.9" callerrev="2.6.5"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8" conf="compile, runtime" rev="2.8.9" rev-constraint-default="2.8.9" rev-constraint-dynamic="2.8.9" callerrev="2.8.9"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.8.9" rev-constraint-default="2.8.9" rev-constraint-dynamic="2.8.9" callerrev="2.8.9"/>
+				<artifacts>
+					<artifact name="jackson-databind" type="bundle" ext="jar" status="successful" details="" size="1242477" time="2414" location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.8.9.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.8.9/jackson-databind-2.8.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-annotations">
+			<revision name="2.8.9" status="release" pubdate="20170611173719" resolver="public" artresolver="public" homepage="http://github.com/FasterXML/jackson" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="25">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="1848" time="227" location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/ivy-2.8.9.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/ivy-2.8.9.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.8.9/jackson-annotations-2.8.9.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.8.9" rev-constraint-default="2.8.9" rev-constraint-dynamic="2.8.9" callerrev="2.6.5"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.8.0" rev-constraint-default="2.8.0" rev-constraint-dynamic="2.8.0" callerrev="2.8.9"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.8.0" rev-constraint-default="2.8.0" rev-constraint-dynamic="2.8.0" callerrev="2.8.9"/>
+				<artifacts>
+					<artifact name="jackson-annotations" type="bundle" ext="jar" status="successful" details="" size="55784" time="268" location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.8.9.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.8.9/jackson-annotations-2.8.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.8.0" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.8.9"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.8.0" rev-constraint-default="2.8.0" rev-constraint-dynamic="2.8.0" callerrev="2.8.9"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.8.0" rev-constraint-default="2.8.0" rev-constraint-dynamic="2.8.0" callerrev="2.8.9"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-core">
+			<revision name="2.8.9" status="release" pubdate="20170611174341" resolver="public" artresolver="public" homepage="https://github.com/FasterXML/jackson-core" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="24">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="5415" time="228" location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/ivy-2.8.9.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/ivy-2.8.9.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.8.9/jackson-core-2.8.9.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.8.9" rev-constraint-default="2.8.9" rev-constraint-dynamic="2.8.9" callerrev="2.6.5"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8" conf="compile, runtime" rev="2.8.9" rev-constraint-default="2.8.9" rev-constraint-dynamic="2.8.9" callerrev="2.8.9"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.8.9" rev-constraint-default="2.8.9" rev-constraint-dynamic="2.8.9" callerrev="2.8.9"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.8.9" rev-constraint-default="2.8.9" rev-constraint-dynamic="2.8.9" callerrev="2.8.9"/>
+				<artifacts>
+					<artifact name="jackson-core" type="bundle" ext="jar" status="successful" details="" size="282633" time="544" location="/Users/andyshi/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.8.9.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.8.9/jackson-core-2.8.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="joda-time" name="joda-time">
+			<revision name="2.9.9" status="release" pubdate="20170323063313" resolver="public" artresolver="public" homepage="http://www.joda.org/joda-time/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="23">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="34627" time="277" location="/Users/andyshi/.ivy2/cache/joda-time/joda-time/ivy-2.9.9.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/joda-time/joda-time/ivy-2.9.9.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/joda-time/joda-time/2.9.9/joda-time-2.9.9.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.9.9" rev-constraint-default="2.9.9" rev-constraint-dynamic="2.9.9" callerrev="2.6.5"/>
+				<artifacts>
+					<artifact name="joda-time" type="jar" ext="jar" status="successful" details="" size="634048" time="1465" location="/Users/andyshi/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.9.9.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/joda-time/joda-time/2.9.9/joda-time-2.9.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.typelevel" name="macro-compat_2.12">
+			<revision name="1.1.1" status="release" pubdate="20161102014258" resolver="public" artresolver="public" homepage="https://github.com/milessabin/macro-compat" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="22">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="1915" time="229" location="/Users/andyshi/.ivy2/cache/org.typelevel/macro-compat_2.12/ivy-1.1.1.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/org.typelevel/macro-compat_2.12/ivy-1.1.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/typelevel/macro-compat_2.12/1.1.1/macro-compat_2.12-1.1.1.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="1.1.1" rev-constraint-default="1.1.1" rev-constraint-dynamic="1.1.1" callerrev="2.6.5"/>
+				<artifacts>
+					<artifact name="macro-compat_2.12" type="jar" ext="jar" status="successful" details="" size="3180" time="438" location="/Users/andyshi/.ivy2/cache/org.typelevel/macro-compat_2.12/jars/macro-compat_2.12-1.1.1.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/typelevel/macro-compat_2.12/1.1.1/macro-compat_2.12-1.1.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.play" name="play-functional_2.12">
+			<revision name="2.6.5" status="release" pubdate="20170914130039" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-json" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="20">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
+				<metadata-artifact status="successful" details="" size="1539" time="226" location="/Users/andyshi/.ivy2/cache/com.typesafe.play/play-functional_2.12/ivy-2.6.5.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.typesafe.play/play-functional_2.12/ivy-2.6.5.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-functional_2.12/2.6.5/play-functional_2.12-2.6.5.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.6.5" rev-constraint-default="2.6.5" rev-constraint-dynamic="2.6.5" callerrev="2.6.5"/>
+				<artifacts>
+					<artifact name="play-functional_2.12" type="jar" ext="jar" status="successful" details="" size="177939" time="407" location="/Users/andyshi/.ivy2/cache/com.typesafe.play/play-functional_2.12/jars/play-functional_2.12-2.6.5.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-functional_2.12/2.6.5/play-functional_2.12-2.6.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="de.heikoseeberger" name="akka-http-play-json_2.12">
+			<revision name="1.19.0-M2" status="release" pubdate="20170906101832" resolver="public" artresolver="public" homepage="https://github.com/hseeberger/akka-http-json" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="18">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2201" time="259" location="/Users/andyshi/.ivy2/cache/de.heikoseeberger/akka-http-play-json_2.12/ivy-1.19.0-M2.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/de.heikoseeberger/akka-http-play-json_2.12/ivy-1.19.0-M2.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/de/heikoseeberger/akka-http-play-json_2.12/1.19.0-M2/akka-http-play-json_2.12-1.19.0-M2.pom"/>
+				<caller organisation="IBM" name="myapp_2.12" conf="compile, runtime" rev="1.19.0-M2" rev-constraint-default="1.19.0-M2" rev-constraint-dynamic="1.19.0-M2" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="akka-http-play-json_2.12" type="jar" ext="jar" status="successful" details="" size="10591" time="258" location="/Users/andyshi/.ivy2/cache/de.heikoseeberger/akka-http-play-json_2.12/jars/akka-http-play-json_2.12-1.19.0-M2.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/de/heikoseeberger/akka-http-play-json_2.12/1.19.0-M2/akka-http-play-json_2.12-1.19.0-M2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.akka" name="akka-http_2.12">
+			<revision name="10.0.10" status="release" pubdate="20170831074017" resolver="public" artresolver="public" homepage="http://akka.io" downloaded="true" searched="true" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="15">
+				<license name="Apache-2.0" url="https://opensource.org/licenses/Apache-2.0"/>
+				<metadata-artifact status="successful" details="" size="1993" time="225" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-http_2.12/ivy-10.0.10.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-http_2.12/ivy-10.0.10.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-http_2.12/10.0.10/akka-http_2.12-10.0.10.pom"/>
+				<caller organisation="IBM" name="myapp_2.12" conf="compile, runtime" rev="10.0.10" rev-constraint-default="10.0.10" rev-constraint-dynamic="10.0.10" callerrev="0.1-SNAPSHOT"/>
+				<caller organisation="de.heikoseeberger" name="akka-http-play-json_2.12" conf="default, compile, runtime, master" rev="10.0.10" rev-constraint-default="10.0.10" rev-constraint-dynamic="10.0.10" callerrev="1.19.0-M2"/>
+				<artifacts>
+					<artifact name="akka-http_2.12" type="jar" ext="jar" status="successful" details="" size="1680194" time="1480" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-http_2.12/jars/akka-http_2.12-10.0.10.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-http_2.12/10.0.10/akka-http_2.12-10.0.10.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.akka" name="akka-http-core_2.12">
+			<revision name="10.0.10" status="release" pubdate="20170831073939" resolver="public" artresolver="public" homepage="http://akka.io" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="16">
+				<license name="Apache-2.0" url="https://opensource.org/licenses/Apache-2.0"/>
+				<metadata-artifact status="successful" details="" size="3231" time="228" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-http-core_2.12/ivy-10.0.10.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-http-core_2.12/ivy-10.0.10.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-http-core_2.12/10.0.10/akka-http-core_2.12-10.0.10.pom"/>
+				<caller organisation="com.typesafe.akka" name="akka-http_2.12" conf="default, compile, runtime, master" rev="10.0.10" rev-constraint-default="10.0.10" rev-constraint-dynamic="10.0.10" callerrev="10.0.10"/>
+				<artifacts>
+					<artifact name="akka-http-core_2.12" type="jar" ext="jar" status="successful" details="" size="3177087" time="2526" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-http-core_2.12/jars/akka-http-core_2.12-10.0.10.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-http-core_2.12/10.0.10/akka-http-core_2.12-10.0.10.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.akka" name="akka-parsing_2.12">
+			<revision name="10.0.10" status="release" pubdate="20170831073827" resolver="public" artresolver="public" homepage="http://akka.io" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="17">
+				<license name="Apache-2.0" url="https://opensource.org/licenses/Apache-2.0"/>
+				<metadata-artifact status="successful" details="" size="2211" time="223" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-parsing_2.12/ivy-10.0.10.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-parsing_2.12/ivy-10.0.10.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-parsing_2.12/10.0.10/akka-parsing_2.12-10.0.10.pom"/>
+				<caller organisation="com.typesafe.akka" name="akka-http-core_2.12" conf="compile, runtime" rev="10.0.10" rev-constraint-default="10.0.10" rev-constraint-dynamic="10.0.10" callerrev="10.0.10"/>
+				<artifacts>
+					<artifact name="akka-parsing_2.12" type="jar" ext="jar" status="successful" details="" size="969074" time="2216" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-parsing_2.12/jars/akka-parsing_2.12-10.0.10.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-parsing_2.12/10.0.10/akka-parsing_2.12-10.0.10.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.akka" name="akka-cluster_2.12">
+			<revision name="2.5.4" status="release" pubdate="20170810062614" resolver="public" artresolver="public" homepage="http://akka.io/" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="4">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2689" time="227" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-cluster_2.12/ivy-2.5.4.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-cluster_2.12/ivy-2.5.4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-cluster_2.12/2.5.4/akka-cluster_2.12-2.5.4.pom"/>
+				<caller organisation="IBM" name="myapp_2.12" conf="compile, runtime" rev="2.5.4" rev-constraint-default="2.5.4" rev-constraint-dynamic="2.5.4" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="akka-cluster_2.12" type="jar" ext="jar" status="successful" details="" size="760363" time="1040" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-cluster_2.12/jars/akka-cluster_2.12-2.5.4.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-cluster_2.12/2.5.4/akka-cluster_2.12-2.5.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.akka" name="akka-remote_2.12">
+			<revision name="2.5.4" status="release" pubdate="20170810062336" resolver="public" artresolver="public" homepage="http://akka.io/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="5">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="3986" time="234" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-remote_2.12/ivy-2.5.4.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-remote_2.12/ivy-2.5.4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-remote_2.12/2.5.4/akka-remote_2.12-2.5.4.pom"/>
+				<caller organisation="com.typesafe.akka" name="akka-cluster_2.12" conf="default, compile, runtime, master" rev="2.5.4" rev-constraint-default="2.5.4" rev-constraint-dynamic="2.5.4" callerrev="2.5.4"/>
+				<artifacts>
+					<artifact name="akka-remote_2.12" type="jar" ext="jar" status="successful" details="" size="2258074" time="1994" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-remote_2.12/jars/akka-remote_2.12-2.5.4.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-remote_2.12/2.5.4/akka-remote_2.12-2.5.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.aeron" name="aeron-driver">
+			<revision name="1.2.5" status="release" pubdate="20170412133450" resolver="public" artresolver="public" homepage="https://github.com/real-logic/Aeron" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="12">
+				<license name="The Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2286" time="228" location="/Users/andyshi/.ivy2/cache/io.aeron/aeron-driver/ivy-1.2.5.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/io.aeron/aeron-driver/ivy-1.2.5.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/aeron/aeron-driver/1.2.5/aeron-driver-1.2.5.pom"/>
+				<caller organisation="com.typesafe.akka" name="akka-remote_2.12" conf="compile, runtime" rev="1.2.5" rev-constraint-default="1.2.5" rev-constraint-dynamic="1.2.5" callerrev="2.5.4"/>
+				<artifacts>
+					<artifact name="aeron-driver" type="jar" ext="jar" status="successful" details="" size="218992" time="400" location="/Users/andyshi/.ivy2/cache/io.aeron/aeron-driver/jars/aeron-driver-1.2.5.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/aeron/aeron-driver/1.2.5/aeron-driver-1.2.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.aeron" name="aeron-client">
+			<revision name="1.2.5" status="release" pubdate="20170412133437" resolver="public" artresolver="public" homepage="https://github.com/real-logic/Aeron" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="13">
+				<license name="The Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2282" time="224" location="/Users/andyshi/.ivy2/cache/io.aeron/aeron-client/ivy-1.2.5.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/io.aeron/aeron-client/ivy-1.2.5.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/aeron/aeron-client/1.2.5/aeron-client-1.2.5.pom"/>
+				<caller organisation="io.aeron" name="aeron-driver" conf="compile, runtime" rev="1.2.5" rev-constraint-default="1.2.5" rev-constraint-dynamic="1.2.5" callerrev="1.2.5"/>
+				<caller organisation="com.typesafe.akka" name="akka-remote_2.12" conf="compile, runtime" rev="1.2.5" rev-constraint-default="1.2.5" rev-constraint-dynamic="1.2.5" callerrev="2.5.4"/>
+				<artifacts>
+					<artifact name="aeron-client" type="jar" ext="jar" status="successful" details="" size="111150" time="298" location="/Users/andyshi/.ivy2/cache/io.aeron/aeron-client/jars/aeron-client-1.2.5.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/aeron/aeron-client/1.2.5/aeron-client-1.2.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.agrona" name="agrona">
+			<revision name="0.9.5" status="release" pubdate="20170412131342" resolver="public" artresolver="public" homepage="https://github.com/real-logic/Agrona" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="14">
+				<license name="The Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2088" time="242" location="/Users/andyshi/.ivy2/cache/org.agrona/agrona/ivy-0.9.5.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/org.agrona/agrona/ivy-0.9.5.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/agrona/agrona/0.9.5/agrona-0.9.5.pom"/>
+				<caller organisation="io.aeron" name="aeron-client" conf="compile, runtime" rev="0.9.5" rev-constraint-default="0.9.5" rev-constraint-dynamic="0.9.5" callerrev="1.2.5"/>
+				<artifacts>
+					<artifact name="agrona" type="jar" ext="jar" status="successful" details="" size="269612" time="492" location="/Users/andyshi/.ivy2/cache/org.agrona/agrona/jars/agrona-0.9.5.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/agrona/agrona/0.9.5/agrona-0.9.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty">
+			<revision name="3.10.6.Final" status="release" pubdate="20160629054528" resolver="public" artresolver="public" homepage="http://netty.io/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="11">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="28829" time="280" location="/Users/andyshi/.ivy2/cache/io.netty/netty/ivy-3.10.6.Final.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/io.netty/netty/ivy-3.10.6.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty/3.10.6.Final/netty-3.10.6.Final.pom"/>
+				<caller organisation="com.typesafe.akka" name="akka-remote_2.12" conf="compile, runtime" rev="3.10.6.Final" rev-constraint-default="3.10.6.Final" rev-constraint-dynamic="3.10.6.Final" callerrev="2.5.4"/>
+				<artifacts>
+					<artifact name="netty" type="bundle" ext="jar" status="successful" details="" size="1292696" time="1662" location="/Users/andyshi/.ivy2/cache/io.netty/netty/bundles/netty-3.10.6.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty/3.10.6.Final/netty-3.10.6.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.akka" name="akka-protobuf_2.12">
+			<revision name="2.5.4" status="release" pubdate="20170810061831" resolver="public" artresolver="public" homepage="http://akka.io/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="10">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="1672" time="225" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-protobuf_2.12/ivy-2.5.4.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-protobuf_2.12/ivy-2.5.4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-protobuf_2.12/2.5.4/akka-protobuf_2.12-2.5.4.pom"/>
+				<caller organisation="com.typesafe.akka" name="akka-remote_2.12" conf="compile, runtime" rev="2.5.4" rev-constraint-default="2.5.4" rev-constraint-dynamic="2.5.4" callerrev="2.5.4"/>
+				<artifacts>
+					<artifact name="akka-protobuf_2.12" type="jar" ext="jar" status="successful" details="" size="484660" time="1618" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-protobuf_2.12/jars/akka-protobuf_2.12-2.5.4.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-protobuf_2.12/2.5.4/akka-protobuf_2.12-2.5.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.akka" name="akka-stream_2.12">
+			<revision name="2.5.4" status="release" pubdate="20170810062044" resolver="public" artresolver="public" homepage="http://akka.io/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="6">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2632" time="228" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-stream_2.12/ivy-2.5.4.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-stream_2.12/ivy-2.5.4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-stream_2.12/2.5.4/akka-stream_2.12-2.5.4.pom"/>
+				<caller organisation="com.typesafe.akka" name="akka-http-core_2.12" conf="compile, runtime" rev="2.4.19" rev-constraint-default="2.4.19" rev-constraint-dynamic="2.4.19" callerrev="10.0.10"/>
+				<caller organisation="com.typesafe.akka" name="akka-remote_2.12" conf="compile, runtime" rev="2.5.4" rev-constraint-default="2.5.4" rev-constraint-dynamic="2.5.4" callerrev="2.5.4"/>
+				<artifacts>
+					<artifact name="akka-stream_2.12" type="jar" ext="jar" status="successful" details="" size="3667109" time="2170" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-stream_2.12/jars/akka-stream_2.12-2.5.4.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-stream_2.12/2.5.4/akka-stream_2.12-2.5.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.4.19" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.5.4"/>
+				<caller organisation="com.typesafe.akka" name="akka-http-core_2.12" conf="compile, runtime" rev="2.4.19" rev-constraint-default="2.4.19" rev-constraint-dynamic="2.4.19" callerrev="10.0.10"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe" name="ssl-config-core_2.12">
+			<revision name="0.2.1" status="release" pubdate="20161102063833" resolver="public" artresolver="public" homepage="https://github.com/typesafehub/ssl-config" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="8">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="3027" time="224" location="/Users/andyshi/.ivy2/cache/com.typesafe/ssl-config-core_2.12/ivy-0.2.1.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.typesafe/ssl-config-core_2.12/ivy-0.2.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/ssl-config-core_2.12/0.2.1/ssl-config-core_2.12-0.2.1.pom"/>
+				<caller organisation="com.typesafe.akka" name="akka-stream_2.12" conf="compile, runtime" rev="0.2.1" rev-constraint-default="0.2.1" rev-constraint-dynamic="0.2.1" callerrev="2.5.4"/>
+				<artifacts>
+					<artifact name="ssl-config-core_2.12" type="bundle" ext="jar" status="successful" details="" size="243527" time="1256" location="/Users/andyshi/.ivy2/cache/com.typesafe/ssl-config-core_2.12/bundles/ssl-config-core_2.12-0.2.1.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/ssl-config-core_2.12/0.2.1/ssl-config-core_2.12-0.2.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang.modules" name="scala-parser-combinators_2.12">
+			<revision name="1.0.4" status="release" pubdate="20161028191045" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="9">
+				<license name="BSD 3-clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="no" details="" size="2918" time="0" location="/Users/andyshi/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/ivy-1.0.4.xml" searched="false" origin-is-local="false" origin-location="file:////Users/andyshi/.sbt/preloaded/org.scala-lang.modules/scala-parser-combinators_2.12/1.0.4/ivys/ivy.xml"/>
+				<caller organisation="com.typesafe" name="ssl-config-core_2.12" conf="compile, runtime" rev="1.0.4" rev-constraint-default="1.0.4" rev-constraint-dynamic="1.0.4" callerrev="0.2.1"/>
+				<artifacts>
+					<artifact name="scala-parser-combinators_2.12" type="bundle" ext="jar" status="successful" details="" size="204313" time="589" location="/Users/andyshi/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/bundles/scala-parser-combinators_2.12-1.0.4.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.0.4/scala-parser-combinators_2.12-1.0.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.reactivestreams" name="reactive-streams">
+			<revision name="1.0.1" status="release" pubdate="20170809032439" resolver="public" artresolver="public" homepage="http://www.reactive-streams.org/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="7">
+				<license name="CC0" url="http://creativecommons.org/publicdomain/zero/1.0/"/>
+				<metadata-artifact status="successful" details="" size="1159" time="225" location="/Users/andyshi/.ivy2/cache/org.reactivestreams/reactive-streams/ivy-1.0.1.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/org.reactivestreams/reactive-streams/ivy-1.0.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/reactivestreams/reactive-streams/1.0.1/reactive-streams-1.0.1.pom"/>
+				<caller organisation="com.typesafe.akka" name="akka-stream_2.12" conf="compile, runtime" rev="1.0.1" rev-constraint-default="1.0.1" rev-constraint-dynamic="1.0.1" callerrev="2.5.4"/>
+				<artifacts>
+					<artifact name="reactive-streams" type="jar" ext="jar" status="successful" details="" size="2086" time="237" location="/Users/andyshi/.ivy2/cache/org.reactivestreams/reactive-streams/jars/reactive-streams-1.0.1.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/reactivestreams/reactive-streams/1.0.1/reactive-streams-1.0.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.akka" name="akka-actor_2.12">
+			<revision name="2.5.4" status="release" pubdate="20170810061700" resolver="public" artresolver="public" homepage="http://akka.io/" downloaded="true" searched="true" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="1">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2026" time="234" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-actor_2.12/ivy-2.5.4.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-actor_2.12/ivy-2.5.4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-actor_2.12/2.5.4/akka-actor_2.12-2.5.4.pom"/>
+				<caller organisation="com.typesafe.akka" name="akka-stream_2.12" conf="compile, runtime" rev="2.5.4" rev-constraint-default="2.5.4" rev-constraint-dynamic="2.5.4" callerrev="2.5.4"/>
+				<caller organisation="com.typesafe.akka" name="akka-parsing_2.12" conf="compile, runtime" rev="2.4.19" rev-constraint-default="2.4.19" rev-constraint-dynamic="2.4.19" callerrev="10.0.10"/>
+				<caller organisation="com.typesafe.akka" name="akka-remote_2.12" conf="compile, runtime" rev="2.5.4" rev-constraint-default="2.5.4" rev-constraint-dynamic="2.5.4" callerrev="2.5.4"/>
+				<caller organisation="IBM" name="myapp_2.12" conf="compile, runtime" rev="2.5.4" rev-constraint-default="2.5.4" rev-constraint-dynamic="2.5.4" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="akka-actor_2.12" type="jar" ext="jar" status="successful" details="" size="3177384" time="4332" location="/Users/andyshi/.ivy2/cache/com.typesafe.akka/akka-actor_2.12/jars/akka-actor_2.12-2.5.4.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-actor_2.12/2.5.4/akka-actor_2.12-2.5.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.4.19" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.5.4"/>
+				<caller organisation="com.typesafe.akka" name="akka-parsing_2.12" conf="compile, runtime" rev="2.4.19" rev-constraint-default="2.4.19" rev-constraint-dynamic="2.4.19" callerrev="10.0.10"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang.modules" name="scala-java8-compat_2.12">
+			<revision name="0.8.0" status="release" pubdate="20161029151227" resolver="public" artresolver="public" homepage="http://www.scala-lang.org/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="3">
+				<license name="BSD 3-clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="successful" details="" size="2337" time="229" location="/Users/andyshi/.ivy2/cache/org.scala-lang.modules/scala-java8-compat_2.12/ivy-0.8.0.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/org.scala-lang.modules/scala-java8-compat_2.12/ivy-0.8.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/modules/scala-java8-compat_2.12/0.8.0/scala-java8-compat_2.12-0.8.0.pom"/>
+				<caller organisation="com.typesafe.akka" name="akka-actor_2.12" conf="default, compile, runtime, master" rev="0.8.0" rev-constraint-default="0.8.0" rev-constraint-dynamic="0.8.0" callerrev="2.5.4"/>
+				<artifacts>
+					<artifact name="scala-java8-compat_2.12" type="bundle" ext="jar" status="successful" details="" size="1165728" time="1394" location="/Users/andyshi/.ivy2/cache/org.scala-lang.modules/scala-java8-compat_2.12/bundles/scala-java8-compat_2.12-0.8.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/modules/scala-java8-compat_2.12/0.8.0/scala-java8-compat_2.12-0.8.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe" name="config">
+			<revision name="1.3.1" status="release" pubdate="20160924055320" resolver="public" artresolver="public" homepage="https://github.com/typesafehub/config" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="2">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="1864" time="231" location="/Users/andyshi/.ivy2/cache/com.typesafe/config/ivy-1.3.1.xml" searched="true" original-local-location="/Users/andyshi/.ivy2/cache/com.typesafe/config/ivy-1.3.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/config/1.3.1/config-1.3.1.pom"/>
+				<caller organisation="com.typesafe" name="ssl-config-core_2.12" conf="compile, runtime" rev="1.2.0" rev-constraint-default="1.2.0" rev-constraint-dynamic="1.2.0" callerrev="0.2.1"/>
+				<caller organisation="com.typesafe.akka" name="akka-actor_2.12" conf="default, compile, runtime, master" rev="1.3.1" rev-constraint-default="1.3.1" rev-constraint-dynamic="1.3.1" callerrev="2.5.4"/>
+				<artifacts>
+					<artifact name="config" type="bundle" ext="jar" status="successful" details="" size="282549" time="523" location="/Users/andyshi/.ivy2/cache/com.typesafe/config/bundles/config-1.3.1.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/config/1.3.1/config-1.3.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="1.2.0" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="1.3.1"/>
+				<caller organisation="com.typesafe" name="ssl-config-core_2.12" conf="compile, runtime" rev="1.2.0" rev-constraint-default="1.2.0" rev-constraint-dynamic="1.2.0" callerrev="0.2.1"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.12.3" status="release" pubdate="20170725034730" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.12.3/" downloaded="false" searched="false" default="false" conf="default, master(*), compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="0">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="no" details="" size="2471" time="0" location="/Users/andyshi/.ivy2/cache/org.scala-lang/scala-library/ivy-2.12.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3.pom"/>
+				<caller organisation="com.typesafe.akka" name="akka-http_2.12" conf="default, compile, runtime, master" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="10.0.10"/>
+				<caller organisation="com.typesafe" name="ssl-config-core_2.12" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="0.2.1"/>
+				<caller organisation="com.typesafe.akka" name="akka-actor_2.12" conf="default, compile, runtime, master" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="2.5.4"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="2.6.5"/>
+				<caller organisation="org.scala-lang.modules" name="scala-java8-compat_2.12" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="0.8.0"/>
+				<caller organisation="com.typesafe.akka" name="akka-stream_2.12" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="2.5.4"/>
+				<caller organisation="com.typesafe.akka" name="akka-protobuf_2.12" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="2.5.4"/>
+				<caller organisation="com.typesafe.akka" name="akka-parsing_2.12" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="10.0.10"/>
+				<caller organisation="IBM" name="myapp_2.12" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="0.1-SNAPSHOT"/>
+				<caller organisation="de.heikoseeberger" name="akka-http-play-json_2.12" conf="default, compile, runtime, master" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="1.19.0-M2"/>
+				<caller organisation="org.scala-lang.modules" name="scala-parser-combinators_2.12" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="1.0.4"/>
+				<caller organisation="com.typesafe.akka" name="akka-cluster_2.12" conf="default, compile, runtime, master" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="2.5.4"/>
+				<caller organisation="com.typesafe.akka" name="akka-http-core_2.12" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="10.0.10"/>
+				<caller organisation="com.typesafe.play" name="play-functional_2.12" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="2.6.5"/>
+				<caller organisation="com.typesafe.akka" name="akka-remote_2.12" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="2.5.4"/>
+				<caller organisation="org.scala-lang" name="scala-reflect" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="2.12.3"/>
+				<caller organisation="org.typelevel" name="macro-compat_2.12" conf="compile, runtime" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="1.1.1"/>
+				<artifacts>
+					<artifact name="scala-library" type="jar" ext="jar" status="no" details="" size="5246851" time="0" location="/Users/andyshi/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.12.3.jar">
+						<origin-location is-local="false" location="UNKNOWN"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>

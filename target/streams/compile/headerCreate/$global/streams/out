@@ -1,0 +1,280 @@
+[0m[[0m[0mdebug[0m] [0m[0mAbout to create/update header for /Users/andyshi/Downloads/akka-cluster-example/src/main/scala/com/lightbend/example/cluster/ClusterMembership.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0mFirst line of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mText of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0m/*[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Copyright 2017 IBM[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Licensed under the Apache License, Version 2.0 (the "License");[0m
+[0m[[0m[0mdebug[0m] [0m[0m * you may not use this file except in compliance with the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * You may obtain a copy of the License at[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m *     http://www.apache.org/licenses/LICENSE-2.0[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Unless required by applicable law or agreed to in writing, software[0m
+[0m[[0m[0mdebug[0m] [0m[0m * distributed under the License is distributed on an "AS IS" BASIS,[0m
+[0m[[0m[0mdebug[0m] [0m[0m * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * See the License for the specific language governing permissions and[0m
+[0m[[0m[0mdebug[0m] [0m[0m * limitations under the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m */[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mpackage com.lightbend.example.cluster[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport akka.actor.{ Actor, Props }[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport akka.cluster.ClusterEvent.MemberEvent[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport akka.cluster.{ Cluster, ClusterEvent, Member }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mobject ClusterMembership {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  val Name = "cluster-membership"[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  def props: Props = Props(new ClusterMembership)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed trait Message[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /**[0m
+[0m[[0m[0mdebug[0m] [0m[0m   * Sent as a request to obtain membership info[0m
+[0m[[0m[0mdebug[0m] [0m[0m   */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  case object GetMembershipInfo extends Message[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /**[0m
+[0m[[0m[0mdebug[0m] [0m[0m   * Sent as a reply to [[GetMembershipInfo]]; contains the list of [[members]] of the cluster.[0m
+[0m[[0m[0mdebug[0m] [0m[0m   */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  case class MembershipInfo(members: Set[Member]) extends Message[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mabstract class ClusterMembershipAware extends Actor {[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  override def receive = handleMembershipEvents(Set.empty)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  protected def handleMembershipEvents(members: Set[Member]): Receive = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    case event: ClusterEvent.MemberRemoved =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m      context.become(handleMembershipEvents(members.filterNot(_ == event.member)))[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    case event: ClusterEvent.MemberEvent =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m      context.become(handleMembershipEvents(members.filterNot(_ == event.member) + event.member))[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    case ClusterMembership.GetMembershipInfo =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m      sender() ! ClusterMembership.MembershipInfo(members)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m/**[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Subscribes to the membership events, stores the updated list of the members in the Akka cluster.[0m
+[0m[[0m[0mdebug[0m] [0m[0m */[0m
+[0m[[0m[0mdebug[0m] [0m[0mclass ClusterMembership extends ClusterMembershipAware {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  private val cluster = Cluster(context.system)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  override def preStart(): Unit =[0m
+[0m[[0m[0mdebug[0m] [0m[0m    cluster.subscribe(self, initialStateMode = ClusterEvent.InitialStateAsEvents, classOf[MemberEvent])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  override def postStop(): Unit =[0m
+[0m[[0m[0mdebug[0m] [0m[0m    cluster.unsubscribe(self)[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified text of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mNone[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to create/update header for /Users/andyshi/Downloads/akka-cluster-example/src/main/scala/com/lightbend/example/cluster/HttpEndpoint.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0mFirst line of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mText of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0m/*[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Copyright 2017 IBM[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Licensed under the Apache License, Version 2.0 (the "License");[0m
+[0m[[0m[0mdebug[0m] [0m[0m * you may not use this file except in compliance with the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * You may obtain a copy of the License at[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m *     http://www.apache.org/licenses/LICENSE-2.0[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Unless required by applicable law or agreed to in writing, software[0m
+[0m[[0m[0mdebug[0m] [0m[0m * distributed under the License is distributed on an "AS IS" BASIS,[0m
+[0m[[0m[0mdebug[0m] [0m[0m * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * See the License for the specific language governing permissions and[0m
+[0m[[0m[0mdebug[0m] [0m[0m * limitations under the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m */[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mpackage com.lightbend.example.cluster[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport akka.actor.ActorRef[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport akka.http.scaladsl.settings.RoutingSettings[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport akka.http.scaladsl.server.{ Directives, Route }[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport akka.stream.ActorMaterializer[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport akka.pattern._[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport de.heikoseeberger.akkahttpplayjson.PlayJsonSupport[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport scala.concurrent.ExecutionContext[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport scala.concurrent.duration.FiniteDuration[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mobject HttpEndpoint extends PlayJsonSupport {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  def routes(clusterMembership: ActorRef, askTimeout: FiniteDuration)(implicit mat: ActorMaterializer, ec: ExecutionContext, rs: RoutingSettings): Route = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    import Directives._[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Route.seal([0m
+[0m[[0m[0mdebug[0m] [0m[0m      path("members") {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        pathEndOrSingleSlash {[0m
+[0m[[0m[0mdebug[0m] [0m[0m          get {[0m
+[0m[[0m[0mdebug[0m] [0m[0m            complete {[0m
+[0m[[0m[0mdebug[0m] [0m[0m              implicit val jsonSerializer = JsonSerializer.membershipInfoJsonSerializer[0m
+[0m[[0m[0mdebug[0m] [0m[0m              clusterMembership.ask(ClusterMembership.GetMembershipInfo)(askTimeout)[0m
+[0m[[0m[0mdebug[0m] [0m[0m                .mapTo[ClusterMembership.MembershipInfo][0m
+[0m[[0m[0mdebug[0m] [0m[0m            }[0m
+[0m[[0m[0mdebug[0m] [0m[0m          }[0m
+[0m[[0m[0mdebug[0m] [0m[0m        }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      })[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified text of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mNone[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to create/update header for /Users/andyshi/Downloads/akka-cluster-example/src/main/scala/com/lightbend/example/cluster/JsonSerializer.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0mFirst line of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mText of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0m/*[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Copyright 2017 IBM[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Licensed under the Apache License, Version 2.0 (the "License");[0m
+[0m[[0m[0mdebug[0m] [0m[0m * you may not use this file except in compliance with the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * You may obtain a copy of the License at[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m *     http://www.apache.org/licenses/LICENSE-2.0[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Unless required by applicable law or agreed to in writing, software[0m
+[0m[[0m[0mdebug[0m] [0m[0m * distributed under the License is distributed on an "AS IS" BASIS,[0m
+[0m[[0m[0mdebug[0m] [0m[0m * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * See the License for the specific language governing permissions and[0m
+[0m[[0m[0mdebug[0m] [0m[0m * limitations under the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m */[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mpackage com.lightbend.example.cluster[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport akka.cluster.{ Member, MemberStatus }[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport play.api.libs.json.{ Format, JsResult, JsString, JsValue, Json }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mobject JsonSerializer {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit val memberStatusJsonSerializer: Format[MemberStatus] = new Format[MemberStatus] {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    override def reads(json: JsValue): JsResult[MemberStatus] =[0m
+[0m[[0m[0mdebug[0m] [0m[0m      throw new UnsupportedOperationException("Reading MemberStatus from json is not supported")[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    override def writes(o: MemberStatus): JsValue =[0m
+[0m[[0m[0mdebug[0m] [0m[0m      JsString([0m
+[0m[[0m[0mdebug[0m] [0m[0m        o match {[0m
+[0m[[0m[0mdebug[0m] [0m[0m          case MemberStatus.Joining  => "Joining"[0m
+[0m[[0m[0mdebug[0m] [0m[0m          case MemberStatus.WeaklyUp => "WeaklyUp"[0m
+[0m[[0m[0mdebug[0m] [0m[0m          case MemberStatus.Up       => "Up"[0m
+[0m[[0m[0mdebug[0m] [0m[0m          case MemberStatus.Down     => "Down"[0m
+[0m[[0m[0mdebug[0m] [0m[0m          case MemberStatus.Exiting  => "Exiting"[0m
+[0m[[0m[0mdebug[0m] [0m[0m          case MemberStatus.Leaving  => "Leaving"[0m
+[0m[[0m[0mdebug[0m] [0m[0m          case MemberStatus.Removed  => "Removed"[0m
+[0m[[0m[0mdebug[0m] [0m[0m        })[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit val memberJsonSerializer: Format[Member] = new Format[Member] {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    override def reads(json: JsValue): JsResult[Member] =[0m
+[0m[[0m[0mdebug[0m] [0m[0m      throw new UnsupportedOperationException("Reading Member from json is not supported")[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    override def writes(o: Member): JsValue =[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Json.obj([0m
+[0m[[0m[0mdebug[0m] [0m[0m        "address" -> o.uniqueAddress.address.toString,[0m
+[0m[[0m[0mdebug[0m] [0m[0m        "status" -> o.status,[0m
+[0m[[0m[0mdebug[0m] [0m[0m        "roles" -> o.roles)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit val membershipInfoJsonSerializer: Format[ClusterMembership.MembershipInfo] = Json.format[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified text of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mNone[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to create/update header for /Users/andyshi/Downloads/akka-cluster-example/src/main/scala/com/lightbend/example/cluster/Main.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0mFirst line of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mText of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0m/*[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Copyright 2017 IBM[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Licensed under the Apache License, Version 2.0 (the "License");[0m
+[0m[[0m[0mdebug[0m] [0m[0m * you may not use this file except in compliance with the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * You may obtain a copy of the License at[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m *     http://www.apache.org/licenses/LICENSE-2.0[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Unless required by applicable law or agreed to in writing, software[0m
+[0m[[0m[0mdebug[0m] [0m[0m * distributed under the License is distributed on an "AS IS" BASIS,[0m
+[0m[[0m[0mdebug[0m] [0m[0m * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * See the License for the specific language governing permissions and[0m
+[0m[[0m[0mdebug[0m] [0m[0m * limitations under the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m */[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mpackage com.lightbend.example.cluster[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport java.util.concurrent.TimeUnit[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport akka.actor.ActorSystem[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport akka.http.scaladsl.Http[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport akka.http.scaladsl.settings.RoutingSettings[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport akka.stream.ActorMaterializer[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport scala.concurrent.duration._[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mobject Main {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  def main(args: Array[String]): Unit = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val httpHost =[0m
+[0m[[0m[0mdebug[0m] [0m[0m      sys.props.getOrElse([0m
+[0m[[0m[0mdebug[0m] [0m[0m        "httpHost",[0m
+[0m[[0m[0mdebug[0m] [0m[0m        throw new IllegalArgumentException("HTTP bind host must be defined by the httpHost property"))[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val httpPort =[0m
+[0m[[0m[0mdebug[0m] [0m[0m      sys.props[0m
+[0m[[0m[0mdebug[0m] [0m[0m        .get("httpPort")[0m
+[0m[[0m[0mdebug[0m] [0m[0m        .map(_.toInt)[0m
+[0m[[0m[0mdebug[0m] [0m[0m        .getOrElse(throw new IllegalArgumentException("HTTP bind port must be defined by the httpPort property"))[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val clusterMembershipAskTimeout =[0m
+[0m[[0m[0mdebug[0m] [0m[0m      sys.props[0m
+[0m[[0m[0mdebug[0m] [0m[0m        .get("clusterMembershipAskTimeout")[0m
+[0m[[0m[0mdebug[0m] [0m[0m        .map(v => FiniteDuration(v.toLong, TimeUnit.MILLISECONDS))[0m
+[0m[[0m[0mdebug[0m] [0m[0m        .getOrElse(throw new IllegalArgumentException("ClusterMembership ask timeout must be defined by the clusterMembershipAskTimeout property"))[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val actorSystemName =[0m
+[0m[[0m[0mdebug[0m] [0m[0m      sys.props.getOrElse([0m
+[0m[[0m[0mdebug[0m] [0m[0m        "akkaActorSystemName",[0m
+[0m[[0m[0mdebug[0m] [0m[0m        throw new IllegalArgumentException("Actor system name must be defined by the actorSystemName property"))[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    implicit val actorSystem = ActorSystem(actorSystemName)[0m
+[0m[[0m[0mdebug[0m] [0m[0m    implicit val mat = ActorMaterializer()[0m
+[0m[[0m[0mdebug[0m] [0m[0m    import actorSystem.dispatcher[0m
+[0m[[0m[0mdebug[0m] [0m[0m    implicit val http = Http(actorSystem)[0m
+[0m[[0m[0mdebug[0m] [0m[0m    implicit val routingSettings = RoutingSettings(actorSystem)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val clusterMembership = actorSystem.actorOf(ClusterMembership.props, ClusterMembership.Name)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val route = HttpEndpoint.routes(clusterMembership, clusterMembershipAskTimeout)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    http.bindAndHandle(route, httpHost, httpPort)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified text of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mNone[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to create/update header for /Users/andyshi/Downloads/akka-cluster-example/src/main/resources/application.conf[0m
+[0m[[0m[0mdebug[0m] [0m[0mFirst line of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mText of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0m# Copyright 2017 IBM[0m
+[0m[[0m[0mdebug[0m] [0m[0m#[0m
+[0m[[0m[0mdebug[0m] [0m[0m# Licensed under the Apache License, Version 2.0 (the "License");[0m
+[0m[[0m[0mdebug[0m] [0m[0m# you may not use this file except in compliance with the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m# You may obtain a copy of the License at[0m
+[0m[[0m[0mdebug[0m] [0m[0m#[0m
+[0m[[0m[0mdebug[0m] [0m[0m#     http://www.apache.org/licenses/LICENSE-2.0[0m
+[0m[[0m[0mdebug[0m] [0m[0m#[0m
+[0m[[0m[0mdebug[0m] [0m[0m# Unless required by applicable law or agreed to in writing, software[0m
+[0m[[0m[0mdebug[0m] [0m[0m# distributed under the License is distributed on an "AS IS" BASIS,[0m
+[0m[[0m[0mdebug[0m] [0m[0m# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.[0m
+[0m[[0m[0mdebug[0m] [0m[0m# See the License for the specific language governing permissions and[0m
+[0m[[0m[0mdebug[0m] [0m[0m# limitations under the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0makka {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  loglevel = info[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  actor {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    provider = akka.cluster.ClusterActorRefProvider[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  cluster {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    seed-nodes = [][0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified text of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mNone[0m

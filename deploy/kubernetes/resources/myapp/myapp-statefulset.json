@@ -1,0 +1,80 @@
+{
+  "apiVersion": "apps/v1beta1",
+  "kind": "StatefulSet",
+  "metadata": {
+    "name": "myapp"
+  },
+  "spec": {
+    "serviceName": "myapp",
+    "replicas": 3,
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "myapp"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "myapp",
+            "image": "szihai/myapp:latest",
+            "imagePullPolicy": "Always",
+            "ports": [
+              {
+                "containerPort": 2551,
+                "name": "akka-remote"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "cpu": "250m",
+                "memory": "384Mi"
+              },
+              "requests": {
+                "cpu": "250m",
+                "memory": "384Mi"
+              }
+            },
+            "env": [
+              {
+                "name": "AKKA_ACTOR_SYSTEM_NAME",
+                "value": "myapp"
+              },
+              {
+                "name": "AKKA_REMOTING_BIND_PORT",
+                "value": "2551"
+              },
+              {
+                "name": "AKKA_REMOTING_BIND_HOST",
+                "value": "$HOSTNAME.myapp.default.svc.cluster.local"
+              },
+              {
+                "name": "AKKA_SEED_NODES",
+                "value": "myapp-0.myapp.default.svc.cluster.local:2551,myapp-1.myapp.default.svc.cluster.local:2551,myapp-2.myapp.default.svc.cluster.local:2551"
+              },
+              {
+                "name": "HTTP_HOST",
+                "value": "0.0.0.0"
+              },
+              {
+                "name": "HTTP_PORT",
+                "value": "9000"
+              },
+              {
+                "name": "CLUSTER_MEMBERSHIP_ASK_TIMEOUT",
+                "value": "5000"
+              }
+            ],
+            "readinessProbe": {
+              "tcpSocket": {
+                "port": 2551
+              },
+              "initialDelaySeconds": 30,
+              "timeoutSeconds": 30
+            }
+          }
+        ]
+      }
+    }
+  }
+}
