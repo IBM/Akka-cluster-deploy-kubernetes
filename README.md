@@ -11,16 +11,15 @@ This solution uses Docker to build container image. In kubernettes, we use `Stat
 
 ## Flow
 <!--Remember to dump an image in this path-->
-![](doc/source/images/architecture.png)
+![TBA](doc/source/images/architecture.png)
 
 <!--Update this section-->
 ## Included components
-Select components from [here](../sections/components.md), copy and paste the raw text for ease
-* [Akka](link): description
-* [Kubernetes](link): description
-* [Docker](link): description
+* [Akka](https://akka.io/): A free and open-source toolkit and runtime simplifying the construction of concurrent and distributed applications on the JVM.
+* [Kubernetes](https://kubernetes.io): An open-source system for automating deployment, scaling, and management of containers.
+* [Docker](https://www.docker.com): Container building,shipping and running platform
 * [sbt](http://www.scala-sbt.org/): The interactive build tool for Scala
-* [Scala](link): description
+* [Scala](https://www.scala-lang.org/): A general-purpose programming language providing support for functional programming and a strong static type system.
 
 <!--Update this section when the video is created-->
 # Watch the Video
