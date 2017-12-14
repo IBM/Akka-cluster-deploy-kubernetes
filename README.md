@@ -2,11 +2,12 @@
 [![Build Status](https://travis-ci.org/IBM/watson-banking-chatbot.svg?branch=master)](https://travis-ci.org/IBM/watson-banking-chatbot)
 ![IBM Cloud Deployments](https://metrics-tracker.mybluemix.net/stats/527357940ca5e1027fbf945add3b15c4/badge.svg)
 <!--Add a new Title and fill in the blanks -->
-# [Deploy Akka Cluster on Kubernetes]
-In this Code Pattern, we will deploy an Akka Cluster on Kubernetes. Along the way, we'll try to explain:
-* What is Akka?   
-* What are the difficulties in deploying Akka cluster on Kubernetes?   
-* The solution to the problem.    
+# Deploy Akka Cluster on Kubernetes
+In this Code Pattern, we will deploy an Akka Cluster on Kubernetes. Kubernetes is the popular micorservices orchastration tool. One of the main features of Kubernetes is to scale in and out pods on demand. Akka cluster by itself is elastic, can scale in or out on demand. However, Akka cluster only manages the applications but not the containers. So it is necessary to deploy the Akka cluster on some microservies platform such as Kubernetes. 
+
+By Akka's design, the "seed node(s)" are the master(s) of the cluster. Any woker node has to register to the seed node(s) at bootstrapping stage or otherwise it will not be able to join the cluster. Even for a single module applicaiton like our example, there has to be one or more seed node.   
+
+This solution uses Docker to build container image. In kubernettes, we use `StatefulSet` than a deployment to handle the special requirements of Akka. And sbt build tool is default for Scala in Akka. There is no 3rd party framworks or tools involved. 
 
 ## Flow
 <!--Remember to dump an image in this path-->
@@ -27,7 +28,7 @@ Select components from [here](../sections/technologies.md), copy and paste the r
 
 <!--Update this section when the video is created-->
 # Watch the Video
-[![](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg)
+![TBA]()
 
 # Steps
 Use the ``Deploy to IBM Cloud`` button **OR** create the services and run locally.
@@ -68,13 +69,13 @@ cd Akka-cluster-deploy-kubernetes
 
 ### 2. Prerequisite
 
-* A working Kubernetes installation, i.e. an actual Kubernetes cluster or Minikube.
+* Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) for local testing, or with [IBM Bluemix Container Service](https://github.com/IBM/container-journey-template) to deploy in cloud. The code here is regularly tested against [Kubernetes Cluster from Bluemix Container Service](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) using Travis.
 * Ensure the Docker environment variable is configured to point to the registry used by the Kubernetes cluster.
-* Have sbt installed.   
+* Have [sbt](https://www.scala-sbt.org/download.html) installed.   
 
 ### 3. Build the Docker base image
 
-Build the Docker base image required by the example app:  
+Build the local Docker base image required by the example app:  
 
 ```bash
 $ cat <<EOF | docker build -t local/openjdk-jre-8-bash:latest -
@@ -83,10 +84,10 @@ RUN apk --no-cache add --update bash coreutils curl
 EOF
 ```
 
-The example app makes use of `openjdk:8-jre-alpine` as the base image with `bash`, networking utility (i.e. `ping`, `telnet`), and `curl`.
+We use `openjdk:8-jre-alpine` as the base image, adding `bash`, networking utility (i.e. `ping`, `telnet`), and `curl` to make it easier for debugging purposes.   
 
 
-### 4. Build the sample app
+### 4. Build and upload the sample app
 
 Ensure you are at the root directory of the example app. Build the example app by running the following command:
 
