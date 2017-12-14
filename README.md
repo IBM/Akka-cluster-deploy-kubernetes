@@ -20,10 +20,6 @@ Select components from [here](../sections/components.md), copy and paste the raw
 * [Kubernetes](link): description
 * [Docker](link): description
 * [sbt](http://www.scala-sbt.org/): The interactive build tool for Scala
-
-<!--Update this section-->
-## Featured technologies
-Select components from [here](../sections/technologies.md), copy and paste the raw text for ease
 * [Scala](link): description
 
 <!--Update this section when the video is created-->
