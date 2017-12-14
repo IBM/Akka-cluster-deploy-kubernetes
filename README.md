@@ -78,7 +78,7 @@ cd Akka-cluster-deploy-kubernetes
 Build the local Docker base image required by the example app:  
 
 ```bash
-$ cat <<EOF | docker build -t local/openjdk-jre-8-bash:latest -
+cat <<EOF | docker build -t local/openjdk-jre-8-bash:latest -
 FROM openjdk:8-jre-alpine
 RUN apk --no-cache add --update bash coreutils curl
 EOF
@@ -88,19 +88,31 @@ We use `openjdk:8-jre-alpine` as the base image, adding `bash`, networking utili
 
 
 ### 4. Build and upload the sample app
-
-Ensure you are at the root directory of the example app. Build the example app by running the following command:
+Ensure you are at the root directory of the example app. It is optional, but you can modify the Docker repo can be specified in the `build.sbt` file by chaning the `dockerRepository` variable . Sbt will build the docker image with the tag `$repo/myapp:latest`.    
+Build the example app by running the following command:
 
 ```bash
-$ sbt docker:publishLocal
+  sbt docker:publishLocal
+```
+After the image is built, upload it to docker hub:
+```bash
+  docker push $repo/myapp:latest
 ```
 
 ### 5. Deploy the cluster on Kubernetes
+Modify the `deploy/kubernetes/resources/myapp/myapp-statefulset.json` file to point to your repo if you did changed the repo in step 4. You can find the spec here:
+```
+"spec": {
+        "containers": [
+          {
+            "name": "myapp",
+            "image": "szihai/myapp:latest",
+```
 
 Deploy the example app by running the following command:
 
 ```bash
-$ kubectl create -f deploy/kubernetes/resources/myapp
+  kubectl create -f deploy/kubernetes/resources/myapp
 ```
 
 ### 6. Confirm the sample app is working
@@ -108,7 +120,7 @@ $ kubectl create -f deploy/kubernetes/resources/myapp
 Check the logs of the pods created by the example app (i.e. `myapp-0`, `myapp-1`, etc.). The `-f` switch follows the logs emitted by the pod.
 
 ```bash
-$ kubectl logs -f myapp-0
+  kubectl logs -f myapp-0
 ```
 
 Once the app is started within the pod, a log entry similar to the following should be displayed:
@@ -120,7 +132,7 @@ Once the app is started within the pod, a log entry similar to the following sho
 The example app exposes the `/members` endpoint which displays the list of members visible for a particular pod. For example, the following displays the list of members visible from `myapp-0` pod:
 
 ```
-$ kubectl exec -ti myapp-0 -- curl -v myapp-0:9000/members
+  kubectl exec -ti myapp-0 -- curl -v myapp-0:9000/members
   *   Trying 172.17.0.5...
   * TCP_NODELAY set
   * Connected to myapp-0 (172.17.0.5) port 9000 (#0)
