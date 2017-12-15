@@ -104,7 +104,7 @@ Modify the `deploy/kubernetes/resources/myapp/myapp-statefulset.json` file to po
             "image": "szihai/myapp:latest",
 ```
 
-Deploy the example app by running the following command:
+Deploy the example app by running the following command. This will create 3 head nodes.
 
 ```bash
   kubectl create -f deploy/kubernetes/resources/myapp
@@ -112,23 +112,19 @@ Deploy the example app by running the following command:
 
 ### 6. Confirm the sample app is working
 
-Check the logs of the pods created by the example app (i.e. `myapp-0`, `myapp-1`, etc.). The `-f` switch follows the logs emitted by the pod.
+After a couple minutes, check the 3 head nodes created by the example app (i.e. `myapp-0`, `myapp-1`,`myapp-2`). And let's add a woker node to join the cluster. 
 
 ```bash
-  kubectl logs -f myapp-0
+  kubectl scale statefulsets myapp --replicas=4
 ```
 
-Once the app is started within the pod, a log entry similar to the following should be displayed:
-
-```
-[INFO] [10/03/2017 03:44:19.758] [myapp-akka.actor.default-dispatcher-17] [akka.cluster.Cluster(akka://myapp)] Cluster Node [akka.tcp://myapp@myapp-0.myapp.default.svc.cluster.local:2551] - Leader is moving node [akka.tcp://myapp@myapp-0.myapp.default.svc.cluster.local:2551] to [Up]
-```
+Once the 4th pod is stood up, we can check the cluster information.
 
 The example app exposes the `/members` endpoint which displays the list of members visible for a particular pod. For example, the following displays the list of members visible from `myapp-0` pod:
 
 ```
   kubectl exec -ti myapp-0 -- curl -v myapp-0:9000/members
-  *   Trying 172.17.0.5...
+  *   Trying 172.30.207.9...
   * TCP_NODELAY set
   * Connected to myapp-0 (172.17.0.5) port 9000 (#0)
   > GET /members HTTP/1.1
@@ -138,16 +134,29 @@ The example app exposes the `/members` endpoint which displays the list of membe
   >
   < HTTP/1.1 200 OK
   < Server: akka-http/10.0.10
-  < Date: Tue, 03 Oct 2017 04:06:32 GMT
+  < Date: Tue, 12 Dec 2017 04:06:32 GMT
   < Content-Type: application/json
   < Content-Length: 147
   <
   {
-    "members" : [ {
-      "address" : "akka.tcp://myapp@myapp-0.myapp.default.svc.cluster.local:2551",
-      "status" : "Up",
-      "roles" : [ ]
-    } ]
+  "members" : [ {
+    "address" : "akka.tcp://myapp@myapp-0.myapp.default.svc.cluster.local:2551",
+    "status" : "Up",
+    "roles" : [ ]
+  }, {
+    "address" : "akka.tcp://myapp@myapp-1.myapp.default.svc.cluster.local:2551",
+    "status" : "Up",
+    "roles" : [ ]
+  }, {
+    "address" : "akka.tcp://myapp@myapp-2.myapp.default.svc.cluster.local:2551",
+    "status" : "Up",
+    "roles" : [ ]
+  }, {
+    "address" : "akka.tcp://myapp@myapp-3.myapp.default.svc.cluster.local:2551",
+    "status" : "Up",
+    "roles" : [ ]
+  } ]
+
   * Connection #0 to host myapp-0 left intact
 ```
 
