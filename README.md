@@ -26,23 +26,6 @@ This solution uses Docker to build container image. In kubernettes, we use `Stat
 ![TBA]()
 
 # Steps
-Use the ``Deploy to IBM Cloud`` button **OR** create the services and run locally.
-
-## Deploy to IBM Cloud 
-<!--Update the repo and tracking id-->
-[![Deploy to IBM Cloud](https://metrics-tracker.mybluemix.net/stats/527357940ca5e1027fbf945add3b15c4/button.svg)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-banking-chatbot.git)
-
-1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
-
-<!--optional step-->
-2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed. Once deployed, the app can be viewed by clicking 'View app'.
-![](doc/source/images/toolchain-pipeline.png)
-
-<!--update with service names from manifest.yml-->
-3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `TODO` with a unique suffix. The following services are created and easily identified by the `TODO-` prefix:
-
-## Try it out
-> NOTE: These steps are only needed when running locally instead of using the ``Deploy to IBM Cloud`` button.
 
 <!-- there are MANY updates necessary here, just screenshots where appropriate -->
 
