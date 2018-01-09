@@ -11,7 +11,13 @@ This solution uses Docker to build container image. In kubernettes, we use `Stat
 
 ## Flow
 <!--Remember to dump an image in this path-->
-![TBA](doc/source/images/architecture.png)
+![Architecture Diagram](Akka.png)
+
+1. Add tools to the the Docker base image   
+2. Use sbt to build the sample app into docker image   
+3. Push the docker image to a docker repository
+4. Deploy the Akka cluster on Kubernetes with `statfulset`
+5. Try out the scaling of Akka cluster
 
 <!--Update this section-->
 ## Included components
