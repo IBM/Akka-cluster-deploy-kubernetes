@@ -3,12 +3,13 @@
 ![IBM Cloud Deployments](https://metrics-tracker.mybluemix.net/stats/527357940ca5e1027fbf945add3b15c4/badge.svg)
 <!--Add a new Title and fill in the blanks -->
 # Deploy Akka Cluster on Kubernetes
-In this Code Pattern, we will deploy an Akka Cluster on Kubernetes. Kubernetes is the popular micorservices orchastration tool. One of the main features of Kubernetes is to scale in and out pods on demand. Akka cluster by itself is elastic, can scale in or out on demand. However, Akka cluster only manages the applications but not the containers. So it is necessary to deploy the Akka cluster on some microservies platform such as Kubernetes. 
+In this Code Pattern, we will deploy a simple Akka application on Kubernetes to demonstrate how you can build an inherently scalable, distributed solution.
 
-By Akka's design, the "seed node(s)" are the master(s) of the cluster. Any woker node has to register to the seed node(s) at bootstrapping stage or otherwise it will not be able to join the cluster. Even for a single module applicaiton like our example, there has to be one or more seed node.   
+Akka is “a set of open-source libraries for designing scalable, resilient systems that span processor cores and networks”. Akka Cluster, in particular, enables the distribution of an application over a cluster, thereby lending elasticity to the application by automatically scaling out or in with the number of members in the cluster. Kubernetes is a container orchestration platform and has the ability to automatically scale the number of pods up or down in response to workload. Together, the two work in concert: your Akka cluster expands automatically as Kubernetes scales the number of pods running for a particular Kubernetes deployment.
 
-This solution uses Docker to build container image. In kubernettes, we use `StatefulSet` than a deployment to handle the special requirements of Akka. And sbt build tool is default for Scala in Akka. There is no 3rd party framworks or tools involved. 
+One key enabler of this elasticity is the ability for new nodes to join the Akka cluster automatically. Akka clusters are a peer-to-peer framework, however some nodes must be designated “seed” nodes when the cluster is initialized. These serve as an initial point of contact for new nodes. When new nodes are brought online, they can join the cluster automatically by first sending a message to all seed nodes in the cluster, followed by a “join” command to the seed node that responds first. Without seed nodes you would have to manually or programmatically add nodes to the cluster.
 
+This solution uses Docker to build a single container image. In Kubernetes, we use StatefulSet rather than Deployment to guarantee the orderly startup of seed nodes.
 ## Flow
 <!--Remember to dump an image in this path-->
 ![Architecture Diagram](https://media.github.ibm.com/user/1650/files/3ad7cfd0-161b-11e8-9f5e-3324668e4739)
@@ -29,7 +30,7 @@ This solution uses Docker to build container image. In kubernettes, we use `Stat
 
 <!--Update this section when the video is created-->
 # Watch the Video
-![TBA]()
+
 
 # Steps
 
