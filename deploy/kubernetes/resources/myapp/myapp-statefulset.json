@@ -18,7 +18,7 @@
           {
             "name": "myapp",
             "image": "szihai/myapp:latest",
-            "imagePullPolicy": "Always",
+            "imagePullPolicy": "IfNotPresent",
             "ports": [
               {
                 "containerPort": 2551,
