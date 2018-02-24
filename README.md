@@ -11,7 +11,7 @@ This solution uses Docker to build container image. In kubernettes, we use `Stat
 
 ## Flow
 <!--Remember to dump an image in this path-->
-![Architecture Diagram](Akka.png)
+![Architecture Diagram](https://media.github.ibm.com/user/1650/files/3ad7cfd0-161b-11e8-9f5e-3324668e4739)
 
 1. Add tools to the the Docker base image   
 2. Use sbt to build the sample app into docker image   
